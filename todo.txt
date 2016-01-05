@@ -1,4 +1,4 @@
 ---
 stopped at
 ---
-- binary search
+- binary search, page 60 in the pdf, 39 in the doc
