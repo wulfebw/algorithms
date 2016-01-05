@@ -13,10 +13,23 @@ def insertion_sort(lst):
     :time: O(n^2) - two loops in worst case in reverse order requires n * n comparisons
     :space: O(n) - one temporary variable holds a value plus the size of the array
 
-    """
-    if len(lst) <= 1:
-        return lst
+                                                                            # cost      # times
+    for i in range(1, len(lst)):                                            # c1        # n
+        cur = lst[i]                                                        # c2        # n - 1
+        comparison_index = i - 1                                            # c3        # n - 1
+        while comparison_index >= 0 and lst[comparison_index] > cur:        # c4        # n - 1
+            lst[comparison_index + 1] = lst[comparison_index]               # c5        # SUM 1 to n (t)
+            comparison_index -= 1                                           # c6        # SUM 1 to n (t)
+        lst[comparison_index + 1] = cur                                     # c7        # n - 1
+    return lst                                                              # c8        # 1
 
+    - to get the time complexity, sum the product of cost and times over all the lines
+    - with this representation it is easy to evaluate the best, average, and worst case runtimes
+    - here we consider the largest term in the expression: c5 * SUM 1 to n (t)
+    - which equals c5 * n(n-1) / 2 operations
+    - therefore O(n^2)
+
+    """
     for i in range(1, len(lst)):
         cur = lst[i]
         comparison_index = i - 1
