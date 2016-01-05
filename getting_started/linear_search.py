@@ -7,7 +7,7 @@ def linear_search(lst, val):
     :description: linear searching algorithm 
 
     :time: O(n) - goes through each element once
-    :space: O(n) - space for the list
+    :space: O(1) - don't count the input list, just have an index 
     """
     for idx, ele in enumerate(lst):
         if ele == val:
@@ -23,3 +23,8 @@ if __name__ == '__main__':
     else:
         print 'value not in list'
     print 'was the value found correctly?: {}'.format(index == data.index(val))
+
+"""
+:additional notes:
+    - Question: how many elements need to be checked on average? n/2
+"""

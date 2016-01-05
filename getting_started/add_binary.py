@@ -7,7 +7,7 @@ def add_binary(val1, val2):
     :description: add two binary numbers represented as lists
 
     :time: ~O(5n)
-    :space: O(3n) - requires 3 lists of size n
+    :space: O(n) since we make a new list
     """
     result =  [0] * (len(val1) + 1)
     carry = 0

@@ -11,7 +11,7 @@ def insertion_sort(lst):
             2. inplace here simply means moving values from one index to another rather than using a separate array
 
     :time: O(n^2) - two loops in worst case in reverse order requires n * n comparisons
-    :space: O(n) - one temporary variable holds a value plus the size of the array
+    :space: O(1) - we don't count the size of the input, just the temp variables of which there are 1
 
                                                                             # cost      # times
     for i in range(1, len(lst)):                                            # c1        # n

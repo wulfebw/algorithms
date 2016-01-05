@@ -1,4 +1,0 @@
-- things to consider
-    1. edge cases
-    2. necessary local variables
-    3. 

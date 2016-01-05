@@ -1,0 +1,4 @@
+---
+stopped at
+---
+- binary search

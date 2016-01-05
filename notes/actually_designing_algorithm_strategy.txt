@@ -1,0 +1,12 @@
+---
+steps
+---
+1. initial pseudocode, avoid actual code 
+2. consider what gaurantees have been made about the input and about the output
+3. decide basecase of recursive algorithm first (always)
+4. regular pseudocode, may contain actual code
+5. consider edge cases
+6. consider necessary local variables
+7. final pseudocode
+8. convert to actual code
+

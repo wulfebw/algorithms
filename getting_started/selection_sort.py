@@ -9,7 +9,7 @@ def selection_sort(lst):
     :description: inplace selection sort 
 
     :time: O(n^2)
-    :space: O(n)
+    :space: O(1)
     """
     if len(lst) <= 1:
         return lst

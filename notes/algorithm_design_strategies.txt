@@ -1,0 +1,22 @@
+---
+outline
+---
+1. incremental
+2. divide-and-conquer
+
+
+---
+incremental
+---
+- e.g., insertion sort
+- incrementally change parts of the input data, thereby separating it into two compoenents
+- first is the componenet of the data that is in the desired form, second is the component that's not
+
+---
+divide-and-conquer
+---
+- steps 
+    1. divide problem into smaller instances of the same problem
+    2. conquer problem by continuing to divide, unless sufficiently small then just solve
+    3. combine solutions to subproblems
+- e.g., merge sort
