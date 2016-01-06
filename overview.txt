@@ -1,0 +1,73 @@
+---
+overview
+---
+
+---
+getting started
+---
+- algorithms 
+    - add_binary [CHECK]
+    - insertion_sort [CHECK]
+    - linear_search [CHECK]
+    - merge_sort [CHECK]
+    - selection_sort [CHECK]
+    - binary_search []
+    - exercise 2.3-7 []
+    - problem 2-1 []
+    - problem 2-2 bubblesort []
+    - problem 2-4 []
+- concepts
+    - how to exactly measure time complexity
+    - how to 'prove' a function to be correct
+    - loop invariance
+    - 
+
+---
+growth of functions
+---
+- algorithms
+    - 
+- concepts
+    - big theta
+    - big O
+    - big Omega
+    - little o
+    - little omega
+    - limits (e.g., lhopitals) (for comparing functions you're not sure about e.g., logn vs sqrt(n))
+    - stirlings formula for factorials
+    - asymptotic notions
+    - monotinicity
+    - floor and ceiling
+    - mod
+    - polynomials
+    - exp
+    - log
+    - factorials
+    - iterated factorial
+    - iterated log
+    - fib
+
+
+---
+divide-and-conquer
+---
+- algorithms
+    - maximum sub-array
+    - multiplying matricies 
+        - normally
+        - Strassen’s algorithm
+    - 
+
+- concepts
+    - recurrences
+    - how to arrive at T(n) of an equation (and/or a recursive form of it)?
+    - solving recurrences, or, determining run times of divide-conquer algorithms
+        - substitution
+        - recursion tree
+        - master method
+    - maximum subarray problem
+    - multiplying matricies
+        - proof of Strassen’s algorithm time complexity
+    - why do ceiling and floor not matter asymptotically?
+
+

@@ -11,7 +11,7 @@ def binary_search(lst, val):
         cut = (stop - start) / 2 + start
         if lst[cut] == val:
             return cut
-        elif lst[cut] <= val:
+        elif lst[cut] > val:
             return recurse(lst, val, start, cut)
         else:
             return recurse(lst, val, cut + 1, stop)
