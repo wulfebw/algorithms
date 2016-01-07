@@ -11,8 +11,8 @@ getting started
     - linear_search [CHECK]
     - merge_sort [CHECK]
     - selection_sort [CHECK]
-    - binary_search []
-    - exercise 2.3-7 []
+    - binary_search [CHECK]
+    - exercise 2.3-7 two_sum_to []
     - problem 2-1 []
     - problem 2-2 bubblesort []
     - problem 2-4 []
@@ -34,6 +34,11 @@ growth of functions
     - little o
     - little omega
     - limits (e.g., lhopitals) (for comparing functions you're not sure about e.g., logn vs sqrt(n))
+    - different ways of establishing these bounds
+        - proof from definition
+            - literally finding constants c1, c2, n0 such that the definitions hold
+        - lim -> inf
+        - proof of theta from bigO and bigOmega
     - stirlings formula for factorials
     - asymptotic notions
     - monotinicity
@@ -42,6 +47,7 @@ growth of functions
     - polynomials
     - exp
     - log
+        - not that all the log bases are in the same bigTheta
     - factorials
     - iterated factorial
     - iterated log

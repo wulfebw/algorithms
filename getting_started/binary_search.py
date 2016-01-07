@@ -3,6 +3,12 @@
 """
 
 def binary_search(lst, val):
+    """
+    :description: binary search for a value
+
+    :time: O(nlogn)
+    :space: O(1)
+    """
 
     def recurse(lst, val, start, stop):
         if len(lst[start:stop]) <= 0:
