@@ -1,0 +1,9 @@
+---
+questions
+---
+
+---
+chapter 3
+---
+- bounds
+    - f(n) E O(f(n/2))?

@@ -13,20 +13,18 @@ getting started
     - selection_sort [CHECK]
     - binary_search [CHECK]
     - exercise 2.3-7 two_sum_to [CHECK]
-    - problem 2-1 []
-    - problem 2-2 bubblesort []
+    - problem 2-1 merge_insertion_sort [CHECK]
+    - problem 2-2 bubblesort [CHECK]
     - problem 2-4 []
 - concepts
     - how to exactly measure time complexity
     - how to 'prove' a function to be correct
-    - loop invariance
-    - 
+    - loop invariance 
+    - proving a loop is invariant
 
 ---
 growth of functions
 ---
-- algorithms
-    - 
 - concepts
     - big theta
     - big O
@@ -57,11 +55,10 @@ growth of functions
 divide-and-conquer
 ---
 - algorithms
-    - maximum sub-array
-    - multiplying matricies 
-        - normally
-        - Strassen’s algorithm
-    - 
+    - maximum sub-array [CHECK]
+    - multiplying matricies [CHECK]
+        - normally [CHECK]
+        - Strassen’s algorithm []
 
 - concepts
     - recurrences
@@ -75,4 +72,15 @@ divide-and-conquer
         - proof of Strassen’s algorithm time complexity
     - why do ceiling and floor not matter asymptotically?
 
+---
+Probabilistic Analysis and Randomized Algorithms
+---
+- algorithms
+    - exercise 5.1-2
+    - exercise 5.1-3 biased_random []
 
+- concepts
+    - analyzing cost of an algorithm rather than run time (equivalent analysis)
+    - probabilistic analysis
+    - randomized algorithms
+    - 
