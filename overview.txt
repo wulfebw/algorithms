@@ -12,7 +12,7 @@ getting started
     - merge_sort [CHECK]
     - selection_sort [CHECK]
     - binary_search [CHECK]
-    - exercise 2.3-7 two_sum_to []
+    - exercise 2.3-7 two_sum_to [CHECK]
     - problem 2-1 []
     - problem 2-2 bubblesort []
     - problem 2-4 []
@@ -52,7 +52,6 @@ growth of functions
     - iterated factorial
     - iterated log
     - fib
-
 
 ---
 divide-and-conquer
