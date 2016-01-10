@@ -39,3 +39,7 @@ if __name__ == '__main__':
     arr = np.arange(50)
     rand = np.array(random_permutation_swap(arr))
     print rand
+
+"""
+:additional notes: swapping with elements anywhere in the array (rather than just those before i) doesn't produce a random array because ...
+"""

@@ -67,6 +67,7 @@ divide-and-conquer
         - substitution
         - recursion tree
         - master method
+    - proof of master theorem
     - maximum subarray problem
     - multiplying matricies
         - proof of Strassen’s algorithm time complexity
@@ -78,10 +79,17 @@ Probabilistic Analysis and Randomized Algorithms
 - algorithms
     - exercise 5.1-2 []
     - exercise 5.1-3 biased_random [CHECK]
-    - random permutation []
+    - random permutation [CHECK]
+    - unsorted search [CHECK]
+    - probabilistic counter [CHECK]
 
 - concepts
     - analyzing cost of an algorithm rather than run time (equivalent analysis)
     - probabilistic analysis
     - randomized algorithms
-    - 
+    - indicator variables (all of these are great probability-based algorithm questions)
+        - birthday paradox
+        - throwing balls in bins
+        - streaks
+        - on-line hiring problem
+

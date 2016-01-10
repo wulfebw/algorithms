@@ -85,8 +85,6 @@ def max_subarray_linear(arr):
         max_so_far = max(max_so_far, max_ending_here)
     return arr[best_start: end+1]
 
-def max_subarray_strassens(arr):
-    raise NotImplementedError("don't think there's much value in this")
 
 if __name__ == '__main__':
     data = [[-1,1,-1],

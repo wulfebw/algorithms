@@ -2,8 +2,24 @@
 questions
 ---
 
+
 ---
 chapter 3
 ---
 - bounds
     - f(n) E O(f(n/2))?
+- what are the ways in which you can solve a recurrence relation?
+
+---
+chapter 4
+---
+- show T(n) = T(n-1) + n is an element of O(n^2) through substitution
+- how do you prove the master theorem? (read section 4.6 and prove it yourself)
+
+---
+chapter 5
+---
+- in determining T(n) of an algorithm, what is the difference between determining it for runtime vs "cost"?
+- why does exchanging with all elements in the random permutation example not produce a truly random ordering?
+- when giving a time complexity analysis of a random algorithm do you still use O notation or something else or do you specify that it's average case? Why would it still be O? Is that not just for worst case analysis? Or does it just reflect a function so it can still be used?
+- 

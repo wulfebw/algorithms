@@ -70,6 +70,10 @@ def multiply_numpy_matricies_recursive_naive(A, B):
     recurse(0, s, 0, s, 0, s, 0, s)      
     return C
 
+
+def multiply_matricies_strassens(arr):
+    raise NotImplementedError("don't think there's much value in this")
+
 def run():
     A = [[1,2],[3,4]]
     B = [[1,0],[0,1]]
