@@ -62,12 +62,18 @@ divide-and-conquer
 
 - concepts
     - recurrences
+        - particularly 
+            - T(n) = aT(n-b) + f(n)
+            - T(n) = aT(n/b) + f(n)
     - how to arrive at T(n) of an equation (and/or a recursive form of it)?
     - solving recurrences, or, determining run times of divide-conquer algorithms
         - substitution
+            - pitfalls
         - recursion tree
         - master method
     - proof of master theorem
+    - change of variables to allow for applying master theorem
+        - e.g., sqrt (this results in log log)
     - maximum subarray problem
     - multiplying matricies
         - proof of Strassen’s algorithm time complexity

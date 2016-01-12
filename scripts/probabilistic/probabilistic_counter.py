@@ -1,3 +1,7 @@
+"""
+:keywords: probability
+"""
+
 import random
 
 def squared(counter):
@@ -30,3 +34,7 @@ def run(probability_function):
 
 if __name__ == '__main__':
     run(squared)
+
+"""
+:additional notes:
+"""
