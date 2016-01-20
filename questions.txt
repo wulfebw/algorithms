@@ -4,14 +4,18 @@ questions
 
 
 ---
-chapter 3
+chapter 3 - 
 ---
 - bounds
     - f(n) E O(f(n/2))?
+    - not necessarily, it is possible that the constant fact : T(n) + T(/2) + const factor may depend on n in an inverse relationship such that the smaller the input the longer the runtime
 - what are the ways in which you can solve a recurrence relation?
+    - sub
+    - recurrence tree
+    - master method
 
 ---
-chapter 4
+chapter 4 - 
 ---
 - show T(n) = T(n-1) + n is an element of O(n^2) through substitution
 - how do you prove the master theorem? (read section 4.6 and prove it yourself)
@@ -20,9 +24,20 @@ chapter 4
 - how do you apply the master theorem? What do you take the log of with which base and why?
 
 ---
-chapter 5
+chapter 5 - probabilistic analysis
 ---
 - in determining T(n) of an algorithm, what is the difference between determining it for runtime vs "cost"?
 - why does exchanging with all elements in the random permutation example not produce a truly random ordering?
 - when giving a time complexity analysis of a random algorithm do you still use O notation or something else or do you specify that it's average case? Why would it still be O? Is that not just for worst case analysis? Or does it just reflect a function so it can still be used?
+
+---
+chapter 7 - quicksort
+---
+- need to go back and prove the runtime using substitution method as well as the probabilistic method presented in the book. These are covered in-depth in the slides
+- how does the Hoare formulation of partition differ from that of the one presented in the book. Why does the book use its formulation?
+- how do you make any non-stable sorting algorithm stable?
+
+---
+chapter 9 - the selection problem, order statistics, and median
+---
 - 

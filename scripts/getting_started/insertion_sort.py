@@ -10,6 +10,8 @@ def insertion_sort(lst):
             1. concept of loop invariance - specficially that lst[0...comparison_index] is always sorted
             2. inplace here simply means moving values from one index to another rather than using a separate array
 
+            high-level description of insertion sort is, implicitly keep two lists in the array, a sorted list and an unsorted list. The first starts empty and the second starts as the whole list. Next, go through the list keeping track of (1) where the sorted list ends and (2) the current element we want to "insert" into the sorted list. Compare the current element to the end of the sorted list, and then move backward through sorted list until we reach an element less than it. Once we reach this element, we know that everything before it is less than it and can insert it. Do that for all elements. 
+
     :time: O(n^2) - two loops in worst case in reverse order requires n * n comparisons
     :space: O(1) - we don't count the size of the input, just the temp variables of which there are 1
 
@@ -47,21 +49,21 @@ if __name__ == '__main__':
 
 """
 :additional notes:
-    - how do we show this is correct?
-        - show loop invariant property holds. Do this through three assertions
-            1. initialization = property is true before the looping
-            2. maintenance = property remains true through a loop if it starts true
-            3. termination = when loop terminates we have a claim that the property is still true
-    - this is a general method of showing that an algorithm works
-    - call it loop invariance
-    - so for the case of insertion sort
-        0. the property we want to maintain is that everything in the list before the current element is already sorted i.e., lst[1...j-1] is sorted
-        1. initialization - at first there is one element so it is sorted
-        2. maintenance - we compare the current element to those prior to it in the list
-            - base case: if we reach the front of the list we stop
-            - if the current element is larger we stop
-            - if it is smaller we keep going, moving the larger element forward in the list therefore maintaining this property
-            - we insert the current element when we find a point where [j-1] < [j] < [j+1]
-        3. termination - since this property held before looping and during looping, we can believe that it holds after looping
-    - essentially proof by induction
+- how do we show this is correct?
+    - show loop invariant property holds. Do this through three assertions
+        1. initialization = property is true before the looping
+        2. maintenance = property remains true through a loop if it starts true
+        3. termination = when loop terminates we have a claim that the property is still true
+- this is a general method of showing that an algorithm works
+- call it loop invariance
+- so for the case of insertion sort
+    0. the property we want to maintain is that everything in the list before the current element is already sorted i.e., lst[1...j-1] is sorted
+    1. initialization - at first there is one element so it is sorted
+    2. maintenance - we compare the current element to those prior to it in the list
+        - base case: if we reach the front of the list we stop
+        - if the current element is larger we stop
+        - if it is smaller we keep going, moving the larger element forward in the list therefore maintaining this property
+        - we insert the current element when we find a point where [j-1] < [j] < [j+1]
+    3. termination - since this property held before looping and during looping, we can believe that it holds after looping
+- essentially proof by induction
 """
