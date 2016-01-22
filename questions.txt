@@ -33,11 +33,16 @@ chapter 5 - probabilistic analysis
 ---
 chapter 7 - quicksort
 ---
-- need to go back and prove the runtime using substitution method as well as the probabilistic method presented in the book. These are covered in-depth in the slides
+- need to go back and prove the runtime using substitution method as well as the probabilistic method presented in the book. These are covered in-depth in the slides. This is the most important problem according to him and will likely be on th test
 - how does the Hoare formulation of partition differ from that of the one presented in the book. Why does the book use its formulation?
 - how do you make any non-stable sorting algorithm stable?
+- how is mergesort different from quicksort? how are they similar?
+- what is quicksort worst time? reverse sorted or sorted
+- difference between "average" and "expected" runtime?
 
 ---
 chapter 9 - the selection problem, order statistics, and median
 ---
+- how many time is the minimum value updated?
+    - logn times < why is this the case? prove it.
 - 

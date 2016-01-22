@@ -10,9 +10,11 @@ def quicksort(arr, random_ordering=False):
     """
     :description: quicksort, in place
 
-    :time: O(n^2) worst case, O(nlogn) average case. The worst case time is O(n^2) because, in the worst case, the input comes in sorted in reverse order. If you take the end element as the pivot always, you will then iterate, for the ith pivot, through n-i elements which is still O(n^2) (i.e., the first recursive call will always do nothing, the second will sort n-i elements, giving a recurrence of T(n) = T(n-1) + Theta(n)). 
+    :time: O(n^2) worst case, O(nlogn) average case. The worst case time is O(n^2) because, in the worst case, the input comes in sorted in reverse order or sorted order. If you take the end element as the pivot always, you will then iterate, for the ith pivot, through n-i elements which is still O(n^2) (i.e., the first recursive call will always do nothing, the second will sort n-i elements, giving a recurrence of T(n) = T(n-1) + Theta(n)). 
 
-        The average case is because each partition will in expectation divide the array in half, giving a recurrence of T(n) = 2T(n/2) + Theta(n), which is nlogn from master theorem. This is achieved in practice by swapping the pivot with a random element before sorting as in random_partition(...).
+        BETTER: in expectation the algorithm will _not_ divide the array perfectly in half. Instead it will divide into some other fraction of left to right where that fraction isn't too bad. (what is this fraction? maybe? actually not sure maybe it is in half)
+
+        WRONG: The average case is because each partition will in expectation divide the array in half, giving a recurrence of T(n) = 2T(n/2) + Theta(n), which is nlogn from master theorem. This is achieved in practice by swapping the pivot with a random element before sorting as in random_partition(...).
 
         Interestingly, so long as the split is a ratio rather than an absolute number of element reduction (e.g., T(n) = T(9/10 * n) + T(1/10 * n) + Theta(n)) the depth of the tree will still be Theta(logn), giving an overall runtime of Theta(nlogn).
 
