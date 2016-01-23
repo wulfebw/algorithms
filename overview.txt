@@ -173,4 +173,26 @@ chapter 11 - hash tables
 - algorithms
 
 - concepts
-    - 
+    - intro
+        - hash tables implement the dictionary interface in O(1) average / expected time / amortized?
+        - they do this by taking advantage of the fact that you can index into an array in O(1) time
+        - normally the usefulness of this is limited by the fact that we don't know the index of an element in an array
+        - to get around this hash tables use information about that object to compute the index
+        - the negative of this is that keys / indicies might not be unique, fortunately this can be made rare and therefore provide for really fast lookup, setting, existence
+    - direct address tables
+        - start out with just an array in which values are stored in locations indexed by their key, those values are generally just pointers to the relevant object
+        - O(1) insert, delete, index
+    - hash table
+        - you have a universe of keys
+        - these are great because you have O(1) set, get, delete
+        - but they are bad because that require a huge array to store correctly
+        - so instead, map all of the keys k to some subset of values using a hash function, and use the resulting hash as a key into a smaller table
+        - this gives collisions, but you get the solid performance by trading off worst case performance for average case performance
+        - collisions
+            - can use chaining, which is just a linked list in the location holding the values
+            - even with collisions and chaining you still get O(1) average case performance
+                - you can get O(1) worst case insert and delete and O(1) average case get
+            - proving average case depends on assumption of unifrom hashing
+                - says keys uniformly distriibuted by hash function accross hash table
+        - 
+

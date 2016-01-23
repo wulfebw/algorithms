@@ -7,12 +7,15 @@ class PriorityHeap(object):
     def __init__(self):
         self.heap = []
 
-    def push(self, val):
+    def put(self, val):
         if val not in self.heap:
             heapq.heappush(self.heap, val)
 
-    def pop(self):
+    def get(self):
         return heapq.heappop(self.heap)
+
+    def empty(self):
+        return len(self.heap) <= 0
 
 def ucs(image):
     heap = PriorityHeap()

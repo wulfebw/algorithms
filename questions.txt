@@ -46,3 +46,9 @@ chapter 9 - the selection problem, order statistics, and median
 - how many time is the minimum value updated?
     - logn times < why is this the case? prove it.
 - 
+
+---
+chapter 11 - hash tables
+---
+- why should chaining lists in hash tables be doubly linked?
+- why is multiplicative hashing used?
