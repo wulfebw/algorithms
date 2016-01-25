@@ -5,6 +5,29 @@
 import copy
 import random
 
+def tail_recursion_quicksort(arr, random_ordering=False):
+    """
+    :description: version of quicksort that only makes a single recursive call by first sorting the left half of the array (as determined by the initial pivot location) and then sorting the right half (of which it's left half is sorted first, continuing until there are no elements in the right half).
+    """
+
+    def partition(arr, start, end):
+        i = start - 1
+        for j in range(i + 1, end):
+            if arr[j] < arr[end]:
+                i += 1
+                arr[i], arr[j] = arr[j], arr[i]
+        i += 1
+        arr[i], arr[end] = arr[end], arr[i]
+        return i
+    
+    def recurse(arr, start, end):
+        while start < end:
+            pivot = partition(arr, start, end)
+            recurse(arr, start, pivot - 1)
+            start = pivot + 1
+
+    recurse(arr, 0, len(arr) - 1)
+    return arr
 
 def quicksort(arr, random_ordering=False):
     """
@@ -62,7 +85,7 @@ if __name__ == '__main__':
 
     overall = True
     for lst in data:
-        sorted_data = quicksort(copy.deepcopy(lst), random_ordering=False)
+        sorted_data = tail_recursion_quicksort(copy.deepcopy(lst), random_ordering=False)
         print sorted_data
         result = sorted(lst) == sorted_data
         overall = overall and result
