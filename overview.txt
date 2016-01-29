@@ -100,6 +100,14 @@ chapter 4, 5 - Probabilistic Analysis and Randomized Algorithms
         - on-line hiring problem
 
 ---
+chapter 6 - heapsort
+---
+- algorithms
+
+- concepts
+    - 
+
+---
 chapter 7 - quicksort
 ---
 - algorithms
@@ -115,16 +123,23 @@ chapter 7 - quicksort
     - to implement randomness, switch the pivot element with a random element
     - there are two versions of the partition function. The first is the one presented in clrs. The second is that originally proposed by Hoare. It seems the professor likes Hoares version
     - also note that quicksort runs inplace giving space of O(1)
-- 
+
 
 ---
 chapter 9 - the selection problem, order statistics, and median
 ---
 - algorithms
+    - min, max, simultaneous max/min [CHECK]
+    - median in expected linear time [CHECK]
+    - median in worst case linear time []
 
 - concepts
-
-    - 
+    - order statistics are stats about the ith element of the list 
+        - ith order stat is the ith smallest element
+    - max, min are two special cases
+        - it's possible to find the maximum and minimum simultaneously in 3/2 * n rather than what you would expect which is 2*n
+    - if we want to find the median of an array, we can do so in O(n^2) worst case and O(n) expected by using an algorithm like quicksort, except that it disregards one half of the array each iteration
+    - can also find the median in O(n) worst case time using SELECT
 
 ---
 chapter 10 - elementary data structures

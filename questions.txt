@@ -22,6 +22,7 @@ chapter 4 -
 - what does the image of the master method breakdown mean? What does it indiciate?
     - the bottom set vs the number of layers vs the overhead of each layer
 - how do you apply the master theorem? What do you take the log of with which base and why?
+- how many layers of recursion does sqrting the number in the recurrence give? In general how do you determine this?
 
 ---
 chapter 5 - probabilistic analysis
