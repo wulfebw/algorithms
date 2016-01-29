@@ -105,6 +105,27 @@ chapter 6 - heapsort
 - algorithms
 
 - concepts
+    - intro
+        - heaps are a data structure that maintains a property over the ordering of its elements with the result that it can quickly access the largest/smallest element
+        - there are min heaps (smallest element == root) and max heaps (largest element == root)
+        - both share the following properties
+            - parent(i) = i/2
+            - left(i) = 2 * i
+            - right(i) = 2 * i + 1
+        - min heap property is that:
+            - A[parent(i)] <= A[i]
+        - max heap property is that:
+            - A[parent(i)] >= A[i]
+        - key operations are:
+            - max-heapify
+                - maintains heap structure in O(lgn)
+            - build-max-head
+                - build heap from array in O(n) time
+            - heapsort
+                - sort inplace in O(nlgn) time
+            - max-heap-insert, heap-extract-max, heap-increase-key, heap-maximum running in O(lgn) time enable priority queue
+    - maintaining heapiness [START HERE]
+        - 
     - 
 
 ---
@@ -139,7 +160,7 @@ chapter 9 - the selection problem, order statistics, and median
     - max, min are two special cases
         - it's possible to find the maximum and minimum simultaneously in 3/2 * n rather than what you would expect which is 2*n
     - if we want to find the median of an array, we can do so in O(n^2) worst case and O(n) expected by using an algorithm like quicksort, except that it disregards one half of the array each iteration
-    - can also find the median in O(n) worst case time using SELECT
+    - can also find the median in O(n) worst case time using SELECT [START HERE]
 
 ---
 chapter 10 - elementary data structures
