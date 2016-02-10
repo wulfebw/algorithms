@@ -53,3 +53,8 @@ chapter 11 - hash tables
 ---
 - why should chaining lists in hash tables be doubly linked?
 - why is multiplicative hashing used?
+
+---
+chapter 12 - binary search trees
+---
+- 

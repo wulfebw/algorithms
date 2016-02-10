@@ -11,8 +11,6 @@ def select(arr, i):
     if len(arr) == 1:
         return arr[0]
 
-    
-
 def randomized_select(arr, i):
     """
     :description: select the ith smallest element from the array
@@ -37,12 +35,12 @@ def randomized_select(arr, i):
 
     def recurse(arr, start, end, i):
         if start == end:
-            return arr[start]
+            return arr[start], start
 
         pivot = random_partition(arr, start, end)
-        print 'start: {}\tend: {}\t\ti: {}\t\tpivot: {}'.format(start, end, i, pivot)
+
         if pivot == i:
-            return arr[pivot]
+            return arr[pivot], pivot
         elif pivot < i:
             return recurse(arr, pivot + 1, end, i)
         else:
@@ -62,7 +60,7 @@ if __name__ == '__main__':
     overall = True
     for arr, expected in zip(data, expecteds):
         med_idx = len(arr) / 2
-        actual = randomized_select(arr, med_idx)
+        actual, idx = randomized_select(arr, med_idx)
         result = actual == expected
         overall = result and overall
         if result:

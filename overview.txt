@@ -103,15 +103,19 @@ chapter 4, 5 - Probabilistic Analysis and Randomized Algorithms
 chapter 6 - heapsort
 ---
 - algorithms
+    - parent, left, right [CHECK]
+    - max_heapify, build_max_heap [CHECK]
+    - heapsort [CHECK]
+    - heap_max, heap_extract_max, heap_increase_key, max_heap_insert [CHECK]
 
 - concepts
     - intro
         - heaps are a data structure that maintains a property over the ordering of its elements with the result that it can quickly access the largest/smallest element
         - there are min heaps (smallest element == root) and max heaps (largest element == root)
-        - both share the following properties
-            - parent(i) = i/2
-            - left(i) = 2 * i
-            - right(i) = 2 * i + 1
+        - both share the following properties (these are indicies into the array)
+            - parent(i) = i/2       # python: max((i - 1) / 2, 0)
+            - left(i) = 2 * i       # python: 2 * i + 1
+            - right(i) = 2 * i + 1  # python: 2 * i + 2
         - min heap property is that:
             - A[parent(i)] <= A[i]
         - max heap property is that:
@@ -124,9 +128,18 @@ chapter 6 - heapsort
             - heapsort
                 - sort inplace in O(nlgn) time
             - max-heap-insert, heap-extract-max, heap-increase-key, heap-maximum running in O(lgn) time enable priority queue
-    - maintaining heapiness [START HERE]
-        - 
-    - 
+    - maintaining heapiness
+        - max/min heap property is maintained by calling max_heapify
+            - max_heapify basically looks at a node in the tree and compares it with its left and right children. If one of the children is larger than the parent it swaps the two and then recursively calls max heapify on the smaller element that was swapped
+            - basically works by moving the element down the tree
+    - building a heap
+        - building a heap works by iteratively calling max_heapify on the first half of the elements in an array to be converted into a heap. Only need to call on first half because these are the only elements that will have children
+    - heapsort
+        - heapsort can be performed inplace with max heap
+        - basically, you swap the top (largest) element with the smallest and then remove the last element (which is now the largest). Next, you call max_heapify, which corrects the heap in lgn time. Repeat this until you run out of nodes
+    - priority queues
+        - priority queues allow for lgn insert / removal of the largest or smallest element of the heap
+        - they use the operations of extracting the max and inserting a value
 
 ---
 chapter 7 - quicksort
@@ -160,7 +173,8 @@ chapter 9 - the selection problem, order statistics, and median
     - max, min are two special cases
         - it's possible to find the maximum and minimum simultaneously in 3/2 * n rather than what you would expect which is 2*n
     - if we want to find the median of an array, we can do so in O(n^2) worst case and O(n) expected by using an algorithm like quicksort, except that it disregards one half of the array each iteration
-    - can also find the median in O(n) worst case time using SELECT [START HERE]
+    - can also find the median in O(n) worst case time using SELECT 
+        - select breaks the elements into groups of 5, sorts them using insertion sort and then calls partition on the medians of those groups
 
 ---
 chapter 10 - elementary data structures
@@ -230,5 +244,16 @@ chapter 11 - hash tables
                 - you can get O(1) worst case insert and delete and O(1) average case get
             - proving average case depends on assumption of unifrom hashing
                 - says keys uniformly distriibuted by hash function accross hash table
-        - 
+
+---
+chapter 12 - binary search trees
+---
+- algorithms
+
+- concepts 
+    - intro
+        - bst is a data structure that stores values in such a way that basic operations depend on the tree heigh which is on average O(lgn)
+        - implements the following operations: search, min, max, pred, succ, insert delete
+    - 
+
 
