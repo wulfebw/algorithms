@@ -253,7 +253,44 @@ chapter 12 - binary search trees
 - concepts 
     - intro
         - bst is a data structure that stores values in such a way that basic operations depend on the tree heigh which is on average O(lgn)
-        - implements the following operations: search, min, max, pred, succ, insert delete
-    - 
+        - implements the following operations: search, min, max, pred, succ, insert, delete
+        - therefore can be used for both dictionary and priority queue
+        - average case lg(n) for all operations (randomly built tree)
+    - succ and pred
+        - succ is the node with the key that is the smallest one larger than the current node
+            - so, with unique keys, 6 is the succ to 5
+        - successor has two cases
+            1. the node has a right subtree - return the minimum of that right subtree
+            2. no right subtree
+                - all left children will be smaller
+                - so we have to go up the tree
+                - going up, if we are going to the left then those values will be less than the original value
+                - so as long as we can keep going left, keep going left (we know this by checking if the new parent's right child is where we came from)
+                - once we go up _and_ right, then we know that the current parent node is greater than the original node (because the original node was left of it), so return the current parent
+                - it's possible we get to the top of the tree coming from the right. in this case there is no successor b/c we started with the largest element
+        - pred is the opposite case
+            - for a given node without left children, it's predecessor will be the largest node smaller than it
+            - going up and to the right, we know these nodes must be larger than the original (o/w breaks bst property)
+            - but once we go up and to the left then we've hit the first node that is smaller than the original node, so we return that
 
+---
+chapter 13 - red black trees
+---
+- algorithms
+
+- concepts 
+    - intro 
+        - red black tree is a bst that guarantees balance
+        - add a color bit to each node
+        - establish and enforce some properties on the the tree
+            1. every node is either red or black
+            2. root is black
+            3. every leaf is black
+            4. if a node is red then children are black
+            5. for each node, each path to leafs contain the same number of black nodes
+        - define sentinel used for the parent of the root and leafs, sentinel is black and other fields don't matter - used to save space
+        - black height of a node is the number of black nodes from a lnode to a leaf (which is constant for both children of the node and is therefore well defined)
+    - why are r-b trees useful?
+        - lemma: r-b tree with n nodes has height at most 2lg(n+1)
+        
 
