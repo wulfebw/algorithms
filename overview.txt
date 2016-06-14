@@ -78,6 +78,12 @@ chapter 3,4 - divide-and-conquer
     - multiplying matricies
         - proof of Strassen’s algorithm time complexity
     - why do ceiling and floor not matter asymptotically?
+    - inversion
+        - to calculate inversions, modify merge sort 
+        - divide and conquer algorithms seem to break into (1) go down both sides and recombine or (2) only go down one side
+        - this is a go down both sides algorithm
+            - when recombining, once you hit a value in the left array that's larger than the rigth array element, you know every element in the left array is larger than that bottom element, so add to the count of inversions the count of the remaining elements in the left array
+            - to do it for twice as big, 
 
 ---
 chapter 4, 5 - Probabilistic Analysis and Randomized Algorithms
@@ -157,6 +163,65 @@ chapter 7 - quicksort
     - to implement randomness, switch the pivot element with a random element
     - there are two versions of the partition function. The first is the one presented in clrs. The second is that originally proposed by Hoare. It seems the professor likes Hoares version
     - also note that quicksort runs inplace giving space of O(1)
+
+---
+chapter 8 - linear time sort
+---
+- algorithms
+    - counting sort
+
+- concepts
+    - intro
+        - we've covered a lot of "comparison sort" algorithms
+        - these have a lower bound of Omega(nlgn)
+        - it's possible to use structure inherit in the input values to sort faster
+    - lower bound on comparison sort
+        - can view all actions as a1 < a2, but comparisons are a1<a2,a1=a2,a1>a2, etc..
+        - can view operation of sorting algorithm as a decision tree where at each node a decision is made concerning the order of two elements i and j
+            - for any sorting algorithm that works by comparisons, the leaves of this tree correspond to the possible permutations of the input
+            - there are n! permutations, all of them must be there or the algorithm might be incorrect
+            - a path from root to leaf denotes a sorting of the input 
+                - the length of the path from root to leaf is therefore a lowerbound on the number of comparisons
+                - what is the length of the path from root to leaf if the leaves must contain all comparisons?
+        - lower bound theorem:
+            - Omega(nlgn)
+        - proof
+            - know that the number of reachabl leaves l must be greater than n! (b/c must contain all permutes)
+            - know that a tree of height h can contain at most 2^h leaves
+            - so n! < l < 2^h
+            - lg(n!) < lg(l) < h
+            - therefore l is lowerbounded by lg(n!) = nlgn 
+    - counting sort
+        - counting sort does the following
+            - init array of counts C to 0
+            - go through elements in A
+                - for each element Aj, increment it's count in C (i.e., C[A[j]]++)
+            - start from beginning of C and accumlate total number of elements before each index
+                - this puts the number of elements before A[j] in C[A[j]]
+            - go through A again, inserting each element into a place in B and decrementing C[A[j]]
+        - O(k + n) run time
+    - radix sort
+        - concept is to sort by 'digits' of a number
+        - logically you would want to start with the most significant digit, but radix sort actually starts with the least significant digit
+        - move up to most significant digit
+        - such that the values become progressively sorted by increasingly digit significance
+        - code is   
+            - for each digit
+                - sort by digit
+        - run time is O(d(n+k)) for d digits, n input values, k possible values for each digit
+            - requires stable sorting algorithm
+        - key thing is to realize that d, the number of digits, cannot depend on n, otherwise this runs in nlgn time
+    - bucket sort
+        - assume input is uniformly distributed over some range
+        - create buckets are regular intervals in that range
+        - insert each element into it's bucket based on the value 
+        - sort the buckets
+        - list the buckets in order
+        - e.g.,
+            - have a lot of numbers between 0 and 1
+            - sort by tenths digit into buckets
+            - sort buckets
+        - 
 
 
 ---
@@ -292,5 +357,205 @@ chapter 13 - red black trees
         - black height of a node is the number of black nodes from a lnode to a leaf (which is constant for both children of the node and is therefore well defined)
     - why are r-b trees useful?
         - lemma: r-b tree with n nodes has height at most 2lg(n+1)
-        
+    - rotations
+        - 2 kinds, left and right
+        - do them to maintain red-black property
+        - left rotation
+            - assume node's right child is not null
+            - pivot left so original node is left child of original right child
+            - right child's left child is now original nodes right child
+        - right rotations
+            - assume nodes left child is not null
+            - pivort rigth so original node is right child of original left child
+            - left childs's right child is now original nodes left child
+    - insert
+        - there are 6 cases to consider with insert but three are symmetric
+        - case 1. the uncle node is red
+            - uncle node is the sibling of the parent of the inserted node
+            - the reason we consider the uncle node is that this allows for making symmetric changes to the tree that maintain property 5
+            - in this case, we make the uncle and the parent black, and make the grandparent red
+        - case 2 and 3: uncle node is black
+            - in this case we rotate the tree without changing the black height of the tree
+
+---
+chapter 14 - augmenting data structures
+---
+- algorithms
+
+- concepts
+    - intro 
+        - augmenting data structures is what you do when the textbook / vanilla data structure does not work for your use case
+        - a lot of the time, you just need to adapt a data structure for it to be used effectively rather than creating an entirely new one 
+    - dynamic order stats
+        - previously we covered how to determine the ith largest element in linear time
+        - what we can do instead using red-black trees is pay an up-front cost to place them in the tree and then extract the ith order stat in only lgn time
+        - to do this we add additional information
+            - add the size of the subtree rooted at each node (which is the number of internal nodes including the root node)
+            - that is, size is left.size + right.size + 1
+        - define method called OS-select that retrieves the ith largest element (in terms of a preorder walk) in lgn time
+            - here the general strategy is (1) define a structure that is amenable to the necessary operations (2) define the operation (3) define how to maintain that operation
+            - os-select does the following
+                - starts at the root
+                - checks if i (the order stat) is less than the size of the tree rooted at x (the current node)
+                    - if less than size of right goes to the left, if greater then size fo left goes to the right, if equal returns x
+        - how to maintain?  
+            - on the way down during insert, increment size of each node on path down
+            - there are at most two rotations in a red black tree by the way
+            - deletion - move up decrementing
+            - for rotations there is an equation for swapping the sizes 
+    - how to augment in general?
+        - 1. choose underlying data structure
+        - 2. determine info to maintain
+        - 3. verify that maintaining that info is possible
+        - 4. dev the new operations
+        - for red black trees, there is a theorem that states that you can add any information and so long as it only depends on x, x.left, x.right, then you can maintain that info in lgn time
+            - this is b/c a const number of rotations occur
+            - and each change must be propogated only to ancestors which takes lgn time to move up the tree
+    - interval trees
+        - closed intervals here - means edges included
+        - properties of two intervals i and i': one of the following holds
+            1. i and i' overlap
+            2. i is left of i'
+            3. i si right of i'
+        - implementation
+            - add the low point of each interval to each node as well as the high point
+            - also add x.max - max endpoint stored in the subtree of x
+            - maintenance not given but should be not too difficult
+
+---
+chapter 15 - dynammic programming
+---
+- algorithms
+
+- concepts
+    - intro
+        - recall divide and conquer - break a problem into _disjoint_ subproblems and combine their solutions
+        - dynammic programming focuses on problems where the subproblems are specifically _not_ disjoint
+            - this means that solutions to subproblems can be reused to avoid recomputing their solution
+            - called "programming" because it stores values in a table (not sure, wha?)
+            - typically apply to optimization problems 
+                - may have many answers to a problem, so consider an optimal answer rather than the optimal answer
+            - four steps
+                1. characterize the structure of an optimal solution
+                    - serves not only to describe form of solution
+                    - but also to confirm that the optimal substructure property holds
+                2. _recursively_ define the optimal solution
+                3. compute the value of an optimal solution in bottom up fashion
+                4. construct the optimal solution from information already computed
+    - rod cutting
+        - what pieces to cut a metal rod into in order to maximize revenue generated by those pieces
+        - can either choose to cut or not cut at each location
+            - so taking the perspective of moving left to right along the rod
+        - can phrase the problem as a max over recursively defined values:
+            reward_n_length_rod = max(reward_n_length_rod (no cuts), r_cut_1 + r_n-1, r_cut_2 + r_n-2, + ... + r_n-1 + r1)
+        - the r subscript terms are unknown but we can define them recursively
+        - exhibits _optimal substructure_ == optimal solutions consist of solutions to subproblems which are also optimal
+        - a simpiler phrasing of the problem is 
+            - rather than break it into the different cuts above, start at one end, cut in only one place, and say the first rod is fixed and the second may be divided further, then move along rod
+            - gives max 1 <= i <= n (p_i + r_n-i)
+                - price of first part and max revenue from second part
+                - this now only have one subproblem rather than two
+        - this approach naively implemented has exponential runtime because it computes the second value recursively n times and each call does this n times - it's like summing 1 to n, where each index is also a sum from 1 to n
+        - we can use DP to make this a polynomial run time algo by storing the computed values and looking them up rather than recomputing
+            - so basically we trade memory for time
+        - two DP methods
+            1. top down method
+                - this consists of recursive calls that check for the value they need to compute before they do 
+                - when they do compute the value, they store it in the table
+                - this is called memoization
+                - these consist of recursive calls 
+                - generalized policy iteration is this on a general graph
+                    - GPI is DP in that it uses previously computed solutions to the values of other states to derive its current value, not exclusively in that it stores its own previous value 
+            2. bottom up method
+                - this involves ordering the values to be computed from small to large
+                - for example, computing value iteration in reverse topological order explicitly solves smaller problems before larger ones
+                - this method is generally faster by a constant factor     
+        - with DP methods, you'll often compute the optimal values but forget to compute how you got there
+            - solution is to also store the solution (and replace it with improvements as you go)
+    - matrix chain multiplication
+        - what order to multiply matricies in
+        - has optimal substructure
+        - has overlapping subproblems
+        - let's try DP
+    - high-level concepts about the application of DP
+        - two things: (1) optimal substructure (2) overlapping subproblems
+        - optimal substructure
+            - optimal solution compossed of optimal solutions to sub problems
+            - varies in two ways
+                - number of sub problems
+                - number of choices of which subproblem to use
+                - product of these two generally give the run time 
+        - the subproblems, once determined, must be _independent_
+            - if they are not then changing one may change the other in a manner that prevents simply storing the result in a table
+        - overlapping subproblems
+            - subproblems must need to be computed multiple times, and there must be relatively few _distinct_ subproblems (since this is a factor in the runtime)
+    - longest common subsequence
+        - stopped here
+
+---
+chapter 17 - amortized analysis
+---
+- algorithms
+
+- concepts
+    - intro
+        - deals with the worst case performance rather than the average case - that's how it differes from average case analysis
+        - it considers the average _cost_ in the worst case
+    - aggregate Analysis
+        - worse case time is T(n), n operations, therefore average cost worst case is T(n) / n
+        - does not differentiate between operations
+    - accounting method
+        - assign credit to each operation
+        - track credit
+        - can never go negative
+        - depends on the amortized cost assigned to each operation
+    - potential method
+        - define function mapping the state of a data structure at time i to a value of potential energy
+        - cost of an operation is c_i
+        - then the amortized cost is c_hat_i = c_i + potential after - potential before
+        - the sum of amortized costs is then the sum of their true costs + the difference between the current potential and the initial potential
+        - basically (1) define some potential function based on the data structure (2) show that at no point does the ponetial drop below 0 (3) do this by showing the costs of the individual operations
+    - dynamic table allocation  
+        - a lot of hash table / maps need to grow when they get to large to ensure upper bound on load factor
+        - this requires allocating a larger table and inserting elements into that table which takes a lot of time
+        - despite this, the amortized cost of each operation is still O(1), we use amortized analysis to show this
+
+
+---
+chapter 22 - elementary graph algorithms
+---
+- algorithms
+
+- concepts
+    - intro
+        - graph algorithms are the shit
+        - fundamental to graphs is the notion of searching through a graph to gather information about it
+        - we cover that
+        - we also cover applications of that
+    - graph representations
+        - can rep either as adj list or adj graph
+            - adj list if E << V^2
+            - adj graph if E ~ V^2
+        - adj list
+            - this is an array where each element is indexed by a node, and that node has a pointer to a list of objects, where each object is a node connected to the original node
+            - Theta(V + E) space
+            - disadvantage is that it doesnt allow for quick lookup
+        - adj mat
+            - V^2 matrix where the vertices are randomly ordered and each entry contains a 1 if the corresponding vertices have an edge E between them
+    - breadth first search 
+        - method of searching a graph in such a way that a tree is constructed that (assuming equal edge costs) gives the shortest path between the starting vertex (source s) and all other nodes
+        - it is called breadth-first search because it expands a frontier of vertices in such a manner that it discovers all vertices at distance k, before discovering any vertex of distance k + 1 from the source
+        - tracks progress by coloring nodes
+            - white = undiscovered
+            - gray = has neighbors that are white
+            - black = all neighbors discovered - i.e., all neighbors black or gray
+        - establishes a bst tree that has expected protery of trees
+        - the way it works is by keeping the nodes implicitly in 3 groups
+            - unexplored (white)
+            - nodes that have been explored (gray)
+            - nodes that have had all their neighbors explored (black)
+        - uses a queue to track exploration status
+    -  depth first search
+        - 
+
 
