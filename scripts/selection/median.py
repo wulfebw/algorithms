@@ -2,7 +2,9 @@
 :keywords: selection
 """
 
+import numpy as np
 import random
+import time
 
 def select(arr, i):
     if len(arr) < 1:
@@ -48,7 +50,7 @@ def randomized_select(arr, i):
 
     return recurse(arr, 0, len(arr) - 1, i)
 
-if __name__ == '__main__':
+def test_median_correctness(func=randomized_select):
     data = [[2,1,3],
             [1,2,3,4,5,6,7,8,9],
             [9,8,7,6,5,4,3,2,1],
@@ -60,7 +62,10 @@ if __name__ == '__main__':
     overall = True
     for arr, expected in zip(data, expecteds):
         med_idx = len(arr) / 2
-        actual, idx = randomized_select(arr, med_idx)
+        if func == randomized_select:
+            actual, idx = func(arr, med_idx)
+        elif func == np.partition:
+            actual = np.partition(arr, med_idx)[med_idx]
         result = actual == expected
         overall = result and overall
         if result:
@@ -68,3 +73,25 @@ if __name__ == '__main__':
         else:
             print 'incorrect for arr: {}, expected: {}, got: {}'.format(arr, expected, actual)
     print 'got everything right?: {}'.format(overall)
+
+def test_order_statistic_performance(func=randomized_select):
+    num_runs = 20
+    num_samples = 2 ** 16
+    k = num_samples / 2
+    st = time.time()
+    for run in range(num_runs):
+        data = np.random.permutation(np.arange(num_samples))
+        if func == randomized_select:
+            med, idx = func(data, k)
+        elif func == np.partition:
+            med = func(data, k)[k]
+    print 'func: {}\tmedian: {}\ttime: {}'.format(func, med, time.time() - st)
+
+
+
+if __name__ == '__main__':
+    test_median_correctness(np.partition)
+    test_median_correctness()
+    test_order_statistic_performance()
+    test_order_statistic_performance(np.partition)
+    
