@@ -42,4 +42,8 @@ if __name__ == '__main__':
 
 """
 :additional notes: to get an unbiased estimator from a biased estimator, or generally to undue some sampling bias, find two secondary random variables that combine earlier ones and then decide between them equally
+    - how do you decide between them equally?
+    - so event a is you flip two coins, one is heads the other is tails
+    - event b is you flip two coins one is tails the other is heads
+    - now just decide between these two equally by randomly choosing the first coin when the two coins are different
 """
