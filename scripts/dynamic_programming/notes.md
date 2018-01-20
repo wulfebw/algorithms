@@ -33,6 +33,7 @@
     - floyd-warshall
     - partition equal sum
     - bellman-ford
+    - recursion/sum_as_pow
 4. recursive definition (w/ recurring substructure) (also count problems)
     - fib
     - binomial_coef
