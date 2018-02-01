@@ -43,6 +43,7 @@
     - rod_cutting_revisited
     - min_jump
     - max_product_cutting
+    - expectd_rolls
 6. misc
     - ugly_numbers
 

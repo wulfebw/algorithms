@@ -11,12 +11,18 @@
 2. recursive backtracking
     - description:
         + the above recursive algorithms essentially only return at the end 
-        + whereas these backtrack repeatedly terminating the search 
+        + whereas these backtrack repeatedly terminate the search 
+        + particularly common strategy is set/if true return true/unset
+            * the idea being that the recursive call returns true only if a solution is found, therefore as soon as you hit a true, you return it 
+                - see 8 queens, boggle (in this case yield instead of return), euler path
     - recursive_backtracking_impl
-        + 8_queens
-        + cubic_decomp
-        + shrink_word
-        + boggle
+        + recursive_backtracking_impl
+            * cubic_decomp
+            * shrink_word
+            * 8_queens
+        + boggle (in graphs dir)
+        + euler path 
+            * recursive backtracking from each node with set / unset 
 3. recursion instead of iterative methods
     - strings
 4. equation-based combinatorics

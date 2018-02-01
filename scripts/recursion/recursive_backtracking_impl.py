@@ -1,3 +1,14 @@
+'''
+recursive backtracking is sort of an extension of exhaustive search wherein 
+it does not expand parts of a the search tree when it knows that they are not 
+useful. 
+
+key point: backtracking search searches for paths through the tree 
+contrast this with breadth and depth first search
+these search methods are looking for specific vertices in a graph 
+- where, since we don't revise we kind of treat that graph as a tree
+'''
+
 
 from context_timer import ContextTimer
 import numpy as np
