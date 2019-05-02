@@ -15,6 +15,7 @@
     - max_all_one_submat
     - edit_dist
     - longest_common_subsequence
+        + space optimized
     - longest_common_subsequence_3_seq
     - longest_common_substring
     - longest_increasing_subseq

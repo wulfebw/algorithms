@@ -31,6 +31,19 @@ def lcs_iterative(a,b):
             table[i][j] = val
     return table[-1][-1]
 
+def lcs_space_optimized(a,b):
+    n, m = len(a), len(b)
+    v = [[0 for _ in range(m+1)] for _ in range(2)]
+    for i in range(n):
+        ci = i % 2
+        pi = (i+1) % 2
+        for j in range(m):
+            if a[i] == b[j]:
+                v[ci][j+1] = 1 + v[pi][j]
+            else:
+                v[ci][j+1] = max(v[pi][j+1], v[ci][j])
+    return v[-1][-1]
+
 
 if __name__ == '__main__':
     inputs = [

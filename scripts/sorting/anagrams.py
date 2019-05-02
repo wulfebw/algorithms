@@ -1,4 +1,9 @@
-
+'''
+todo: figure out what this problem uses
+- ok, so I guess this is sort of sorting in that you have to sort something 
+to get a canonical representation for it 
+- but really it's also hashing
+'''
 import collections
 import numpy as np
 

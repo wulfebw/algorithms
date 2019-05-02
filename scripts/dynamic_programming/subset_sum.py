@@ -67,7 +67,7 @@ def subset_sum_iterative_fast(st, n, sm) :
     # The value of subset[i][j] will be
     # true if there is a subset of 
     # set[0..j-1] with sum equal to i
-    subset=[[Trueß] * (sm+1)] * (n+1)
+    subset=[[True] * (sm+1)] * (n+1)
    
     # If sum is 0, then answer is true
     for i in range(0, n+1) :

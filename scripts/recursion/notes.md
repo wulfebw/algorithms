@@ -8,6 +8,9 @@
     - find_permutations
     - word_break
     - print_all_binary
+    - combinations
+    - note:
+        + a lot of these can be framed as include / exclude problems
 2. recursive backtracking
     - description:
         + the above recursive algorithms essentially only return at the end 

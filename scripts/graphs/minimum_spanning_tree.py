@@ -45,6 +45,24 @@ class Vertex(object):
     def __lt__(self, other):
         return self.value < other.value
 
+class Graph(object):
+
+    def __init__(self, adj={}, w={}):
+        self.adj = adj
+        self.w = w
+
+    def add_vertex(self, v):
+        assert v.k not in self.adj.keys()
+        self.adj[v] = []
+
+    def add_edge(self, u, v, w):
+        assert u in self.adj.keys()
+        self.adj[u].append(v)
+        self.w[(u,v)] = w
+
+    def edge_cost(self, u, v):
+        return self.w[(u,v)]
+
 def prims(g, w, r):
     vertices = []
     for k in g.keys():
@@ -60,6 +78,11 @@ def prims(g, w, r):
             if v.in_q and w[u.k,v.k] < v.value:
                 v.p = u
                 q.decrease_index(v.index, w[u.k,v.k])
+
+
+if __name__ == '__main__':
+
+    
 
 
  
